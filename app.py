@@ -2,8 +2,8 @@ import torch
 import streamlit as st
 from PIL import Image
 
-from models import create_resnet18
-from utils import get_val_transform
+from src.models import create_resnet18
+from src.utils import get_val_transform
 
 
 # ---------------------------------------------------------
