@@ -21,7 +21,7 @@ st.set_page_config(
 # Configuration
 # ---------------------------------------------------------
 
-MODEL_PATH = "resnet18_best.pth"
+MODEL_PATH = "resnet18_3stage_best.pth"
 NUM_CLASSES = 200
 
 device = torch.device(
@@ -184,19 +184,20 @@ with st.expander(
 
     st.write(
         """
-        **Model:** Fine-tuned ImageNet ResNet18
+        **Model:** ResNet18 with 3-stage progressive fine-tuning
 
         **Number of classes:** 200
 
-        **Test Top-1 Accuracy:** 63.54%
+        **Test Top-1 Accuracy:** 67.03%
 
-        **Test Average Accuracy Per Class:** 62.88%
+        **Test Average Accuracy Per Class:** 66.32%
 
-        **Test Top-5 Accuracy:** 86.71%
+        **Test Top-5 Accuracy:** 87.54%
 
-        The model uses transfer learning and was initialized
-        with ImageNet-pretrained weights before being
-        fine-tuned on the bird classification dataset.
+        The model uses transfer learning and progressive fine-tuning.
+        Stage 1 trained the classifier only, Stage 2 fine-tuned layer4
+        and the classifier, and Stage 3 fine-tuned layer3, layer4,
+        and the classifier.
         """
     )
 
